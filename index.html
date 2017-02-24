@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>
-		Beer Trail
-		</title>
+		<title>Beer Trail</title>
 		<link rel="stylesheet" type="text/css" href="css/application.css">
 	</head>
 	<body>
@@ -11,9 +9,15 @@
 			Beer journal of Colorado breweries
 		</h1>
 		<img src="images/BeerMug.jpg" alt="Picture of Beer Mug"/>
-		<p>
-			Beer tastes good.
-		</p>
-		<script src="/vendor/jquery-3.1.1.slim.min.js"></script>
+		<div id="DrinkTable"></div>
+
+		<script src="/vendor/jquery-2.2.4.slim.min.js"></script>
+		<script src="/vendor/underscore-min.js"></script>
+		<script src="/vendor/backbone-min.js"></script>
+		<script src="/scripts/models/drink.js"></script>
+		<script src="/scripts/models/drink_collection.js"></script>
+		<script src="/scripts/views/drink_row.js"></script>
+		<script src="/scripts/views/drink_table.js"></script>
+		<script src="/scripts/app.js"></script>
 	</body>
 </html>
