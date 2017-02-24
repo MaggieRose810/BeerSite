@@ -27,5 +27,27 @@ app.get('/drinks', function(request, response){
 	]);
 	response.end();
 });
+app.get('/breweries', function (request, response){
+	response.json([
+		{
+			id: 1,
+			name: "Low Down Brewery",
+			neighborhood: "Capital Hill"
+
+		},
+		{
+			id: 2,
+			name: "Wynkoop Brewery",
+			neighborhood: "LoDo"
+		},
+		{
+			id: 3,
+			name: "Epic Brewery",
+			neighborhood: "RiNo"
+		}
+
+		]);
+	response.end();
+})
 
 app.listen(8000);

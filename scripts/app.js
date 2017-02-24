@@ -3,8 +3,14 @@ $(document).ready(function(){
 	drinks.fetch()
 
 	var drinkTable = new DrinkTable({
-        el: "#DrinkTable",
+        el: '#DrinkTable',
         collection: drinks
     })
-	drinkTable.render()
+    var breweryCollection = new BreweryCollection();
+    breweryCollection.fetch()
+
+    var breweryTable = new BreweryTable({
+        el: '#BreweryTable',
+        collection: breweryCollection
+    });
 })
