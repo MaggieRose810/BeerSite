@@ -12,5 +12,12 @@ $(document).ready(function(){
     var breweryTable = new BreweryTable({
         el: '#BreweryTable',
         collection: breweryCollection
-    });
+    })
+    var snacksCollection = new SnacksCollection();
+    snacksCollection.fetch()
+
+    var snacksTable = new SnacksTable({
+        el: '#SnacksTable',
+        collection: snacksCollection
+    })
 })
