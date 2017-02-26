@@ -1,6 +1,17 @@
 console.log("Run the Server PLEASE");
 var fs = require('fs');
 var express = require('express');
+var Sequelize = require('sequelize');
+global.sequelize = new Sequelize('beer_site_development', 'root', null, {
+  host: 'localhost',
+  dialect: 'mysql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+});
 var app = express();
 var bodyParser = require('body-parser');
 var breweriesCtrl = require('./app/controllers/breweries_controller')
