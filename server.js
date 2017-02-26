@@ -5,7 +5,26 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(express.static('./'));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json())
+var breweries = [
+		{
+			id: 1,
+			name: "Low Down Brewery",
+			neighborhood: "Capital Hill"
 
+		},
+		{
+			id: 2,
+			name: "Wynkoop Brewery",
+			neighborhood: "LoDo"
+		},
+		{
+			id: 3,
+			name: "Epic Brewery",
+			neighborhood: "RiNo"
+		}
+
+		]
 var drinks = [
 		{
 			id: 1,
@@ -32,27 +51,10 @@ app.get('/drinks', function(request, response){
 	response.end();
 });
 app.get('/breweries', function (request, response){
-	response.json([
-		{
-			id: 1,
-			name: "Low Down Brewery",
-			neighborhood: "Capital Hill"
-
-		},
-		{
-			id: 2,
-			name: "Wynkoop Brewery",
-			neighborhood: "LoDo"
-		},
-		{
-			id: 3,
-			name: "Epic Brewery",
-			neighborhood: "RiNo"
-		}
-
-		]);
+	response.json(breweries);
 	response.end();
 })
+
 app.get('/snacks', function (request, response){
 	response.json([
 	{
@@ -82,4 +84,8 @@ function toDrink(params){
 		percent: parseFloat(params.percent)
 	}
 }
+app.post('/breweries', function(request, response){
+	breweries.push(request.body)
+	response.end()
+})
 app.listen(8000);

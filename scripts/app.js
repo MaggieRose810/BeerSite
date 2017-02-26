@@ -20,4 +20,10 @@ $(document).ready(function(){
         el: '#SnacksTable',
         collection: snacksCollection
     })
+
+    var breweryForm = new BreweryForm({
+        el: '[data-brewery-form]',
+        breweries: breweryCollection
+    })
+    breweryForm.render()
 })
