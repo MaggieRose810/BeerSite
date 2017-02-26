@@ -2,10 +2,11 @@ console.log("Run the Server PLEASE");
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 app.use(express.static('./'));
+app.use(bodyParser.urlencoded({extended:true}));
 
-app.get('/drinks', function(request, response){
-	response.json([
+var drinks = [
 		{
 			id: 1,
 			name: "Bent River IPA",
@@ -24,7 +25,10 @@ app.get('/drinks', function(request, response){
 			ingredients: ["grapes", "tanins"],
 			percent: 22
 		}
-	]);
+	]
+
+app.get('/drinks', function(request, response){
+	response.json(drinks);
 	response.end();
 });
 app.get('/breweries', function (request, response){
@@ -66,6 +70,16 @@ app.get('/snacks', function (request, response){
 	])
 	response.end();
 })
-
-
+app.post('/drinks', function(request,response){
+	drinks.push(toDrink(request.body))
+	response.redirect("/index.html")
+	response.end()
+})
+function toDrink(params){
+	return {
+		name: params.name,
+		ingredients: params.ingredients.split(', '),
+		percent: parseFloat(params.percent)
+	}
+}
 app.listen(8000);

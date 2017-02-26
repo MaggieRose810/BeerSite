@@ -10,6 +10,22 @@
 		</h1>
 		<img src="images/BeerMug.jpg" alt="Picture of Beer Mug"/>
 		<table id="DrinkTable"></table>
+    <form action='/drinks' method='post'>
+      <label>
+        Name
+        <input type="text" name="name"/>
+      </label>
+      <label>
+        Percent
+        <input type="text" name="percent"/>
+      </label>
+       <label>
+        Ingredients
+        <textarea name="ingredients">
+        </textarea>
+      </label>
+      <input type="submit" value="create beer"/>
+     </form>
     <table id="BreweryTable"></table>
     <table id="SnacksTable"></table>
 
