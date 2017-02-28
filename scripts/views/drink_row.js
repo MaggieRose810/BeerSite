@@ -11,7 +11,7 @@ var DrinkRow = Backbone.View.extend({
 			percent: this.model.get('percent'),
 			isBeer: this.model.isBeer(),
 			name: this.model.get('name'),
-			ingredients: this.model.get('ingredients').join(', ')
+			ingredients: this.model.ingredientsList()
 		}))
 	}
 })

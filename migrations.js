@@ -10,10 +10,16 @@ global.sequelize = new Sequelize('beer_site_development', 'root', null, {
   },
 });
 var Drink = require('./app/models/drink')
-Drink.sync({force: true}).then(function () {
-  // Table created
-  return Drink.create({
+var Ingredient = require('./app/models/ingredient')
+
+Ingredient.sync({force: true})
+Drink.sync({force: true}).then(function(){
+  Drink.create({
     name: 'Ophelia',
     percent: 4.2
-  });
-});
+  }).then(function(drink){
+    drink.createIngredient({name: 'hops'})
+    drink.createIngredient({name: 'barley'})
+  })
+})
+
