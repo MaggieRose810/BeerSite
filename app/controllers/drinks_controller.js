@@ -1,13 +1,13 @@
 var Drink = require('../models/drink')
 var Ingredient = require('../models/ingredient')
-function index (request, response){
+const index = (request, response) => {
     Drink.findAll({include: [Ingredient]}).then(function(drinks){
       response.json(drinks);
       response.end();
     })
 }
 
-function create (request,response){
+const create = (request,response) => {
     Drink.create(toDrink(request.body)).then(function(drink){
       request.body.ingredients.split(', ').forEach(function(ingredient){
         drink.createIngredient({
@@ -17,15 +17,14 @@ function create (request,response){
       response.redirect("/index.html")
       response.end()
     })
-
 }
-function toDrink(params){
+function toDrink(params = {}){
     return {
         name: params.name,
         percent: parseFloat(params.percent)
     }
 }
 module.exports = {
-    index: index,
-    create: create
+    index,
+    create
 }

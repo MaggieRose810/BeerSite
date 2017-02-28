@@ -1,4 +1,4 @@
-console.log("Run the Server PLEASE");
+console.log(`Run the Server ${new Date()}`);
 var fs = require('fs');
 var express = require('express');
 var Sequelize = require('sequelize');
